@@ -1,0 +1,2 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+com.line.base.dao.linestarterdaobean.mandatory.DaoDatasourceConfiguration

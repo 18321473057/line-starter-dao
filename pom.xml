@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.0.5.RELEASE</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
+
+    <groupId>com.line.base</groupId>
+    <artifactId>line-starter-dao</artifactId>
+    <version>1.0.0.RELEASE</version>
+    <packaging>pom</packaging>
+
+    <name>line-starter-dao</name>
+
+    <properties>
+        <java.version>1.8</java.version>
+        <druid.version>1.0.27</druid.version>
+        <synapsid.version>1.0.0.RELEASE</synapsid.version>
+    </properties>
+
+    <modules>
+        <module>line-starter-dao-bean</module>
+        <module>line-starter-dao-datasource</module>
+        <module>line-starter-dao-test</module>
+    </modules>
+
+
+    <dependencyManagement>
+        <dependencies>
+            <!-- druid  数据源管理-->
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>druid</artifactId>
+                <version>${druid.version}</version>
+            </dependency>
+
+        </dependencies>
+    </dependencyManagement>
+
+
+    <build>
+        <!--mapper.xml文件和接口放同一文件夹下扫描不到-->
+        <!--maven打包会默认排除非java文件，所以此处需要配置-->
+        <resources>
+            <resource>
+                <directory>src/main/java</directory>
+                <includes>
+                    <include>**/*</include>
+                </includes>
+                <filtering>false</filtering>
+            </resource>
+        </resources>
+    </build>
+
+
+</project>

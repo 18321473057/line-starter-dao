@@ -1,0 +1,3 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+com.line.base.linestarterdaodatasource.datasource.configuration.DatasourceConfiguration,\
+com.line.base.linestarterdaodatasource.dynamic.configuration.DatasourceChangeConfiguration

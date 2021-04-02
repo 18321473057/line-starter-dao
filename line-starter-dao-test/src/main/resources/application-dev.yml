@@ -1,0 +1,50 @@
+
+# 启动服务相关配置
+server:
+  port: 8422
+  tomcat:
+    uri-encoding: UTF-8
+spring:
+  application:
+    name: test
+# 动态数据源 配置
+line:
+  dynamic:
+    datasource:
+      enable: true  # 关闭mysql 连接配置,平时还是用h2方便点
+      defaultDatasourceName: master
+      datasourceList:
+        - name: master
+          url: jdbc:mysql://localhost:3306/line?useUnicode=true&characterEncoding=UTF-8&serverTimezone=GMT%2B8&useSSL=false&allowPublicKeyRetrieval=true
+          username: line
+          password: ycs19930606
+          driverClassName: com.mysql.cj.jdbc.Driver
+          maxActive: 50
+          initialSize: 5
+          validationQuery: select 'x'
+          testWhileIdle: true
+          testOnBorrow: false
+          testOnReturn: false
+          poolPreparedStatements: true
+          maxOpenPreparedStatements: 20
+
+        - name: slave
+          url: jdbc:mysql://192.168.99.133:3306/line?useUnicode=true&characterEncoding=UTF-8&serverTimezone=GMT%2B8&useSSL=false
+          username: root
+          password: ycs19930606
+          driverClassName: com.mysql.cj.jdbc.Driver
+          maxActive: 50
+          initialSize: 5
+          validationQuery: select 'x'
+          testWhileIdle: true
+          testOnBorrow: false
+          testOnReturn: false
+          poolPreparedStatements: true
+          maxOpenPreparedStatements: 20
+
+  dao:
+    base:
+      enable: true
+  # mybatis 配置
+  mybatis:
+    enable: true
